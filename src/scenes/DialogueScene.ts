@@ -3,6 +3,7 @@ import type { DialogueDef, DialogueNode } from '../types';
 import { DIALOGUES } from '../data';
 import { closeOverlay } from '../core/overlay';
 import { showTranslations, toggleTranslations } from '../core/progress';
+import { FONT_FAMILY } from '../core/theme';
 
 interface DialogueData {
   dialogueId: string;
@@ -20,7 +21,7 @@ export class DialogueScene extends Phaser.Scene {
 
   private speakerText!: Phaser.GameObjects.Text;
   private esText!: Phaser.GameObjects.Text;
-  private enText!: Phaser.GameObjects.Text;
+  private frText!: Phaser.GameObjects.Text;
   private hintText!: Phaser.GameObjects.Text;
   private choiceTexts: Phaser.GameObjects.Text[] = [];
 
@@ -46,7 +47,7 @@ export class DialogueScene extends Phaser.Scene {
 
     this.speakerText = this.add
       .text(56, boxY - 16, '', {
-        fontFamily: 'Georgia, serif',
+        fontFamily: FONT_FAMILY,
         fontSize: '17px',
         color: '#f5e9d0',
         backgroundColor: '#7a5a2b',
@@ -55,24 +56,25 @@ export class DialogueScene extends Phaser.Scene {
       .setDepth(1);
 
     this.esText = this.add.text(60, boxY + 16, '', {
-      fontFamily: 'Georgia, serif',
-      fontSize: '20px',
+      fontFamily: FONT_FAMILY,
+      fontSize: '21px',
+      lineSpacing: 8,
       color: '#f5e9d0',
       wordWrap: { width: W - 160 }
     });
 
-    this.enText = this.add.text(60, boxY + 78, '', {
-      fontFamily: 'Georgia, serif',
-      fontSize: '15px',
-      fontStyle: 'italic',
+    this.frText = this.add.text(60, boxY + 78, '', {
+      fontFamily: FONT_FAMILY,
+      fontSize: '16px',
+      lineSpacing: 6,
       color: '#b9a888',
       wordWrap: { width: W - 160 }
     });
 
     this.hintText = this.add
       .text(W - 56, H - 34, 'Espacio: continuar · T: traducción', {
-        fontFamily: 'Georgia, serif',
-        fontSize: '13px',
+        fontFamily: FONT_FAMILY,
+        fontSize: '14px',
         color: '#8f7c5c'
       })
       .setOrigin(1, 0.5);
@@ -100,7 +102,7 @@ export class DialogueScene extends Phaser.Scene {
     const node = this.currentNode();
     this.speakerText.setText(node.speaker);
     this.esText.setText(node.es);
-    this.enText.setText(showTranslations() ? node.en : '');
+    this.frText.setText(showTranslations() ? `FR : ${node.fr}` : '');
 
     this.choiceTexts.forEach((t) => t.destroy());
     this.choiceTexts = [];
@@ -109,10 +111,10 @@ export class DialogueScene extends Phaser.Scene {
       this.hintText.setText('Elige una respuesta · T: traducción');
       const W = this.scale.width;
       node.choices.forEach((choice, i) => {
-        const label = showTranslations() ? `▸ ${choice.es}  (${choice.en})` : `▸ ${choice.es}`;
+        const label = showTranslations() ? `▸ ${choice.es}  (FR : ${choice.fr})` : `▸ ${choice.es}`;
         const t = this.add
           .text(W / 2, this.scale.height - 260 + i * 40, label, {
-            fontFamily: 'Georgia, serif',
+            fontFamily: FONT_FAMILY,
             fontSize: '19px',
             color: '#f5e9d0',
             backgroundColor: '#3a2c18',

@@ -4,39 +4,39 @@
     "1": {
       "speaker": "La sobrina",
       "es": "¡Buenos días, tío! ¿Cómo estás?",
-      "en": "Good morning, uncle! How are you?",
+      "fr": "Bonjour, mon oncle ! Comment vas-tu ?",
       "next": "2"
     },
     "2": {
       "speaker": "Don Quijote",
       "es": "¡Buenos días, sobrina! Estoy muy bien. Hoy salgo en busca de aventuras.",
-      "en": "Good morning, niece! I am very well. Today I set out in search of adventures.",
+      "fr": "Bonjour, ma nièce ! Je vais très bien. Aujourd'hui, je pars à la recherche d'aventures.",
       "next": "3"
     },
     "3": {
       "speaker": "La sobrina",
       "es": "¿Aventuras? ¡Tú lees demasiados libros de caballerías!",
-      "en": "Adventures? You read too many books of chivalry!",
+      "fr": "Des aventures ? Tu lis trop de livres de chevalerie !",
       "next": "4"
     },
     "4": {
       "speaker": "La sobrina",
       "es": "¿De verdad quieres ser caballero andante?",
-      "en": "Do you really want to be a knight-errant?",
+      "fr": "Veux-tu vraiment être chevalier errant ?",
       "choices": [
-        { "es": "Sí, es mi destino.", "en": "Yes, it is my destiny.", "next": "5" },
-        { "es": "Quizás tienes razón...", "en": "Maybe you are right...", "next": "6" }
+        { "es": "Sí, es mi destino.", "fr": "Oui, c'est mon destin.", "next": "5" },
+        { "es": "Quizás tienes razón...", "fr": "Tu as peut-être raison...", "next": "6" }
       ]
     },
     "5": {
       "speaker": "La sobrina",
       "es": "Entonces, primero repasa los saludos. ¡Un caballero debe ser cortés!",
-      "en": "Then first review your greetings. A knight must be polite!"
+      "fr": "Alors, révise d'abord les salutations. Un chevalier doit être courtois !"
     },
     "6": {
       "speaker": "La sobrina",
       "es": "¡Ja! Lo dudo mucho. Igual debes repasar los saludos. ¡Vamos!",
-      "en": "Ha! I very much doubt it. You should review your greetings anyway. Let's go!"
+      "fr": "Ha ! J'en doute fort. Tu devrais quand même réviser les salutations. Allons-y !"
     }
   }
 }

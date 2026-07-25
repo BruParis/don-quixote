@@ -3,10 +3,10 @@ import { el, showResult, shuffled } from './dom';
 
 interface Pair {
   es: string;
-  en: string;
+  fr: string;
 }
 
-/** Drag each Spanish card onto its English translation slot. */
+/** Drag each Spanish card onto its French translation slot. */
 export const matching: MinigameHandler = (container, def, done) => {
   const pairs = def.pairs as Pair[];
 
@@ -49,7 +49,7 @@ export const matching: MinigameHandler = (container, def, done) => {
     }
 
     for (const pair of shuffled(pairs)) {
-      const slot = el('div', 'mg-drop', pair.en);
+      const slot = el('div', 'mg-drop', pair.fr);
       slot.ondragover = (e) => {
         if (!slot.classList.contains('matched')) {
           e.preventDefault();
@@ -62,11 +62,11 @@ export const matching: MinigameHandler = (container, def, done) => {
         slot.classList.remove('over');
         if (slot.classList.contains('matched')) return;
         const es = e.dataTransfer!.getData('text/plain');
-        const isCorrect = pairs.some((p) => p.es === es && p.en === pair.en);
+        const isCorrect = pairs.some((p) => p.es === es && p.fr === pair.fr);
         if (isCorrect) {
           matched++;
           slot.classList.add('matched');
-          slot.textContent = `${es} = ${pair.en}`;
+          slot.textContent = `${es} = ${pair.fr}`;
           const card = leftCol.querySelector<HTMLElement>(`[data-es="${CSS.escape(es)}"]`);
           card?.classList.add('matched');
           card?.setAttribute('draggable', 'false');

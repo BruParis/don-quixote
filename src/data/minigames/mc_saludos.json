@@ -2,20 +2,20 @@
   "id": "mc_saludos",
   "type": "multiple-choice",
   "title": "Vocabulario: Los saludos",
-  "instructions": "Elige la respuesta correcta. (Choose the correct answer.)",
+  "instructions": "Elige la respuesta correcta. (Choisis la bonne réponse.)",
   "questions": [
     {
-      "prompt": "¿Cómo se dice \"Good morning\"?",
+      "prompt": "¿Cómo se dice \"Bonjour\"?",
       "options": ["Buenas noches", "Buenos días", "Hasta luego", "De nada"],
       "answer": 1
     },
     {
       "prompt": "\"¿Cómo estás?\" significa...",
-      "options": ["What is your name?", "How are you?", "Where are you?", "How old are you?"],
+      "options": ["Comment tu t'appelles ?", "Comment vas-tu ?", "Où es-tu ?", "Quel âge as-tu ?"],
       "answer": 1
     },
     {
-      "prompt": "Para despedirte (to say goodbye) dices...",
+      "prompt": "Para despedirte (pour dire au revoir) dices...",
       "options": ["¡Hola!", "¡Salud!", "¡Adiós!", "¡Perdón!"],
       "answer": 2
     },
@@ -26,7 +26,7 @@
     },
     {
       "prompt": "\"Mucho gusto\" significa...",
-      "options": ["Very tasty", "Nice to meet you", "See you soon", "Excuse me"],
+      "options": ["Très savoureux", "Enchanté(e)", "À bientôt", "Excusez-moi"],
       "answer": 1
     }
   ]

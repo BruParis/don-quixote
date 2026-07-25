@@ -48,7 +48,11 @@ export function showResult(
   box.appendChild(el('h2', undefined, passed ? '¡Excelente!' : 'Casi... ¡inténtalo otra vez!'));
   box.appendChild(el('div', 'score', `Puntuación: ${score} / ${total}`));
   box.appendChild(
-    el('div', 'mg-translation', passed ? 'You passed this challenge!' : 'You need more correct answers to pass.')
+    el(
+      'div',
+      'mg-translation',
+      passed ? 'Tu as réussi ce défi !' : 'Il te faut plus de bonnes réponses pour réussir.'
+    )
   );
 
   const cont = el('button', 'mg-btn', 'Continuar') as HTMLButtonElement;

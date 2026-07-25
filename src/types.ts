@@ -52,14 +52,14 @@ export interface MapDef {
 
 export interface DialogueChoice {
   es: string;
-  en: string;
+  fr: string;
   next?: string;
 }
 
 export interface DialogueNode {
   speaker: string;
   es: string;
-  en: string;
+  fr: string;
   next?: string;
   choices?: DialogueChoice[];
 }

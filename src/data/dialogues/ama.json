@@ -4,19 +4,19 @@
     "1": {
       "speaker": "El ama",
       "es": "¡Señor! La cena está lista. Coma algo antes de salir, por favor.",
-      "en": "Sir! Dinner is ready. Please eat something before you leave.",
+      "fr": "Monsieur ! Le dîner est prêt. Mangez quelque chose avant de partir, s'il vous plaît.",
       "next": "2"
     },
     "2": {
       "speaker": "Don Quijote",
       "es": "Un caballero andante no tiene tiempo para cenar, mi querida ama.",
-      "en": "A knight-errant has no time for dinner, my dear housekeeper.",
+      "fr": "Un chevalier errant n'a pas le temps de dîner, ma chère gouvernante.",
       "next": "3"
     },
     "3": {
       "speaker": "El ama",
       "es": "¡Ay, Dios mío! Este hombre está completamente loco.",
-      "en": "Oh, my God! This man is completely mad."
+      "fr": "Mon Dieu ! Cet homme est complètement fou."
     }
   }
 }

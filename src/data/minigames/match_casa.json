@@ -2,12 +2,12 @@
   "id": "match_casa",
   "type": "matching",
   "title": "Vocabulario: La casa y los libros",
-  "instructions": "Arrastra cada palabra española a su traducción. (Drag each Spanish word onto its translation.)",
+  "instructions": "Arrastra cada palabra española a su traducción. (Fais glisser chaque mot espagnol vers sa traduction.)",
   "pairs": [
-    { "es": "el libro", "en": "book" },
-    { "es": "la casa", "en": "house" },
-    { "es": "la puerta", "en": "door" },
-    { "es": "la ventana", "en": "window" },
-    { "es": "la cama", "en": "bed" }
+    { "es": "el libro", "fr": "le livre" },
+    { "es": "la casa", "fr": "la maison" },
+    { "es": "la puerta", "fr": "la porte" },
+    { "es": "la ventana", "fr": "la fenêtre" },
+    { "es": "la cama", "fr": "le lit" }
   ]
 }

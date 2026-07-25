@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import { EPISODES, MAPS } from '../data';
 import { getScore, isEpisodeComplete, isEpisodeUnlocked, resetProgress, showTranslations, toggleTranslations } from '../core/progress';
+import { FONT_FAMILY } from '../core/theme';
 
 /** Map of La Mancha with selectable episode nodes (locked / unlocked / completed). */
 export class WorldMapScene extends Phaser.Scene {
@@ -29,7 +30,7 @@ export class WorldMapScene extends Phaser.Scene {
 
     this.add
       .text(W / 2, 46, 'DON QUIXOTE', {
-        fontFamily: 'Georgia, serif',
+        fontFamily: FONT_FAMILY,
         fontSize: '42px',
         color: '#e8c86a',
         stroke: '#4a3413',
@@ -38,9 +39,8 @@ export class WorldMapScene extends Phaser.Scene {
       .setOrigin(0.5);
     this.add
       .text(W / 2, 90, 'Una aventura para aprender español', {
-        fontFamily: 'Georgia, serif',
+        fontFamily: FONT_FAMILY,
         fontSize: '18px',
-        fontStyle: 'italic',
         color: '#b9a888'
       })
       .setOrigin(0.5);
@@ -76,7 +76,7 @@ export class WorldMapScene extends Phaser.Scene {
 
       this.add
         .text(ep.node.x, ep.node.y + 42, ep.title.replace(/^Episodio \d+: /, ''), {
-          fontFamily: 'Georgia, serif',
+          fontFamily: FONT_FAMILY,
           fontSize: '16px',
           color: '#4a3413',
           align: 'center',
@@ -85,9 +85,8 @@ export class WorldMapScene extends Phaser.Scene {
         .setOrigin(0.5, 0);
       this.add
         .text(ep.node.x, ep.node.y + 62, ep.subtitle, {
-          fontFamily: 'Georgia, serif',
-          fontSize: '13px',
-          fontStyle: 'italic',
+          fontFamily: FONT_FAMILY,
+          fontSize: '14px',
           color: '#7a6844'
         })
         .setOrigin(0.5, 0);
@@ -107,8 +106,8 @@ export class WorldMapScene extends Phaser.Scene {
         if (scores.length) {
           this.add
             .text(ep.node.x, ep.node.y - 44, scores.join(' · '), {
-              fontFamily: 'Georgia, serif',
-              fontSize: '12px',
+              fontFamily: FONT_FAMILY,
+              fontSize: '13px',
               color: '#4a3413'
             })
             .setOrigin(0.5);
@@ -123,12 +122,13 @@ export class WorldMapScene extends Phaser.Scene {
           this.scene.start('Episode', { episodeId: ep.id, mapId: ep.map, spawn: 'default' });
         });
         if (!complete) {
+          // A single slow pulse draws the eye without looping motion running forever (distracting for ADHD).
           this.tweens.add({
             targets: circle,
-            scale: { from: 1, to: 1.12 },
-            duration: 700,
+            scale: { from: 1, to: 1.08 },
+            duration: 1400,
             yoyo: true,
-            repeat: -1
+            repeat: 1
           });
         }
       }
@@ -136,8 +136,8 @@ export class WorldMapScene extends Phaser.Scene {
 
     this.footer = this.add
       .text(W / 2, H - 40, '', {
-        fontFamily: 'Georgia, serif',
-        fontSize: '15px',
+        fontFamily: FONT_FAMILY,
+        fontSize: '16px',
         color: '#b9a888'
       })
       .setOrigin(0.5);

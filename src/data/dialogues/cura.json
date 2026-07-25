@@ -4,19 +4,19 @@
     "1": {
       "speaker": "El cura",
       "es": "¡Estos libros de caballerías son peligrosos! Voy a quemarlos todos.",
-      "en": "These books of chivalry are dangerous! I am going to burn them all.",
+      "fr": "Ces livres de chevalerie sont dangereux ! Je vais tous les brûler.",
       "next": "2"
     },
     "2": {
       "speaker": "Don Quijote",
       "es": "¡No! ¡Mis libros no! Son mi tesoro más querido.",
-      "en": "No! Not my books! They are my dearest treasure.",
+      "fr": "Non ! Pas mes livres ! Ce sont mon trésor le plus cher.",
       "next": "3"
     },
     "3": {
       "speaker": "El cura",
       "es": "Entonces demuestra que aprendes algo útil. Une las palabras de la casa con su significado.",
-      "en": "Then prove that you are learning something useful. Match the household words with their meaning."
+      "fr": "Alors prouve que tu apprends quelque chose d'utile. Associe les mots de la maison à leur sens."
     }
   }
 }

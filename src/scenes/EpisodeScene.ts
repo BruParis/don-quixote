@@ -6,6 +6,7 @@ import { PlayerController } from '../core/PlayerController';
 import { launchOverlay } from '../core/overlay';
 import { hideHud, showHud, showToast } from '../core/hud';
 import { isEpisodeComplete, isTriggerDone, markTrigger, showTranslations, toggleTranslations } from '../core/progress';
+import { FONT_FAMILY } from '../core/theme';
 
 interface EpisodeData {
   episodeId: string;
@@ -100,7 +101,7 @@ export class EpisodeScene extends Phaser.Scene {
       sprite.setDepth(py);
       this.add
         .text(px, py - (isSign ? 10 : 18), def.name, {
-          fontFamily: 'Georgia, serif',
+          fontFamily: FONT_FAMILY,
           fontSize: '7px',
           color: '#ffffff',
           stroke: '#000000',
@@ -134,7 +135,7 @@ export class EpisodeScene extends Phaser.Scene {
 
     this.prompt = this.add
       .text(0, 0, '[E] Hablar', {
-        fontFamily: 'Georgia, serif',
+        fontFamily: FONT_FAMILY,
         fontSize: '8px',
         color: '#ffe9a8',
         stroke: '#000000',

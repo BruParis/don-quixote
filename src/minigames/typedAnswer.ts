@@ -4,7 +4,7 @@ import { answersMatch, el, showResult } from './dom';
 interface TypedItem {
   display: string;
   answer: string;
-  en?: string;
+  fr?: string;
 }
 
 /**
@@ -50,7 +50,7 @@ function runTypedDrill(
         feedback.textContent = `No... la respuesta es: ${item.answer}`;
         feedback.className = 'mg-feedback bad';
       }
-      if (item.en) translation.textContent = item.en;
+      if (item.fr) translation.textContent = item.fr;
 
       const next = el('button', 'mg-btn', idx + 1 < items.length ? 'Siguiente' : 'Ver resultado') as HTMLButtonElement;
       next.onclick = () => {
@@ -86,14 +86,14 @@ interface FibItem {
   sentence: string;
   hint?: string;
   answer: string;
-  en?: string;
+  fr?: string;
 }
 
 export const fillInBlank: MinigameHandler = (container, def, done) => {
   const items = (def.items as FibItem[]).map((it) => ({
     display: it.hint ? `${it.sentence}  (${it.hint})` : it.sentence,
     answer: it.answer,
-    en: it.en
+    fr: it.fr
   }));
   runTypedDrill(container, def, items, done);
 };
@@ -102,14 +102,14 @@ interface ConjItem {
   pronoun: string;
   verb: string;
   answer: string;
-  en?: string;
+  fr?: string;
 }
 
 export const conjugation: MinigameHandler = (container, def, done) => {
   const items = (def.items as ConjItem[]).map((it) => ({
     display: `${it.pronoun} ___  (${it.verb})`,
     answer: it.answer,
-    en: it.en
+    fr: it.fr
   }));
   runTypedDrill(container, def, items, done);
 };

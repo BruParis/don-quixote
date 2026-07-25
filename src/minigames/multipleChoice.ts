@@ -30,11 +30,14 @@ export const multipleChoice: MinigameHandler = (container, def, done) => {
           btn.classList.add('wrong');
           (opts.children[q.answer] as HTMLElement).classList.add('correct');
         }
-        setTimeout(() => {
+        const next = el('button', 'mg-btn', idx + 1 < questions.length ? 'Siguiente' : 'Ver resultado') as HTMLButtonElement;
+        next.onclick = () => {
           idx++;
           if (idx < questions.length) renderQuestion();
           else showResult(container, def, score, questions.length, done, restart);
-        }, 900);
+        };
+        container.appendChild(next);
+        next.focus();
       };
       opts.appendChild(btn);
     });

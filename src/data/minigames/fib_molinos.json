@@ -8,31 +8,31 @@
       "sentence": "Los molinos ___ gigantes para don Quijote.",
       "hint": "ser",
       "answer": "son",
-      "en": "The windmills are giants to Don Quixote."
+      "fr": "Les moulins sont des géants pour don Quichotte."
     },
     {
       "sentence": "Don Quijote ___ contra los molinos.",
       "hint": "luchar",
       "answer": "lucha",
-      "en": "Don Quixote fights against the windmills."
+      "fr": "Don Quichotte se bat contre les moulins."
     },
     {
       "sentence": "El viento ___ las aspas del molino.",
       "hint": "mover",
       "answer": "mueve",
-      "en": "The wind moves the windmill's sails."
+      "fr": "Le vent fait tourner les ailes du moulin."
     },
     {
       "sentence": "Sancho ___ la verdad: ¡son molinos!",
       "hint": "decir",
       "answer": "dice",
-      "en": "Sancho tells the truth: they are windmills!"
+      "fr": "Sancho dit la vérité : ce sont des moulins !"
     },
     {
       "sentence": "Después de la batalla, don Quijote ___ en el suelo.",
       "hint": "estar",
       "answer": "está",
-      "en": "After the battle, Don Quixote is on the ground."
+      "fr": "Après la bataille, don Quichotte est par terre."
     }
   ]
 }

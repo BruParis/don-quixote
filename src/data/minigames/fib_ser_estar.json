@@ -8,31 +8,31 @@
       "sentence": "Yo ___ don Quijote de la Mancha.",
       "hint": "ser",
       "answer": "soy",
-      "en": "I am Don Quixote of La Mancha."
+      "fr": "Je suis don Quichotte de la Manche."
     },
     {
       "sentence": "El barbero ___ en la aldea.",
       "hint": "estar",
       "answer": "está",
-      "en": "The barber is in the village."
+      "fr": "Le barbier est dans le village."
     },
     {
       "sentence": "Mi caballo Rocinante ___ muy flaco.",
       "hint": "ser",
       "answer": "es",
-      "en": "My horse Rocinante is very skinny."
+      "fr": "Mon cheval Rossinante est très maigre."
     },
     {
       "sentence": "Nosotros ___ de La Mancha.",
       "hint": "ser",
       "answer": "somos",
-      "en": "We are from La Mancha."
+      "fr": "Nous sommes de La Manche."
     },
     {
       "sentence": "¿Cómo ___ tú hoy?",
       "hint": "estar",
       "answer": "estás",
-      "en": "How are you today?"
+      "fr": "Comment vas-tu aujourd'hui ?"
     }
   ]
 }

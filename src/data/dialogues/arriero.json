@@ -4,19 +4,19 @@
     "1": {
       "speaker": "El arriero",
       "es": "Cuidado con mis mulas, señor de la armadura vieja.",
-      "en": "Watch out for my mules, sir of the old armor.",
+      "fr": "Attention à mes mules, monsieur à la vieille armure.",
       "next": "2"
     },
     "2": {
       "speaker": "Don Quijote",
       "es": "¡Insolente! ¿No ves que soy un caballero andante?",
-      "en": "Insolent man! Can't you see I am a knight-errant?",
+      "fr": "Insolent ! Ne vois-tu pas que je suis un chevalier errant ?",
       "next": "3"
     },
     "3": {
       "speaker": "El arriero",
       "es": "Yo solo veo a un loco con una bacía en la cabeza.",
-      "en": "All I see is a madman with a barber's basin on his head."
+      "fr": "Je ne vois qu'un fou avec un plat à barbe sur la tête."
     }
   }
 }

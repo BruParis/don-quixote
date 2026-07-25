@@ -4,19 +4,19 @@
     "1": {
       "speaker": "El barbero",
       "es": "¡Buenas tardes, don Alonso! ¿Adónde vas con esa armadura vieja?",
-      "en": "Good afternoon, Don Alonso! Where are you going with that old armor?",
+      "fr": "Bonsoir, don Alonso ! Où vas-tu avec cette vieille armure ?",
       "next": "2"
     },
     "2": {
       "speaker": "Don Quijote",
       "es": "Ya no soy Alonso Quijano. ¡Soy don Quijote de la Mancha, caballero andante!",
-      "en": "I am no longer Alonso Quijano. I am Don Quixote of La Mancha, knight-errant!",
+      "fr": "Je ne suis plus Alonso Quijano. Je suis don Quichotte de la Manche, chevalier errant !",
       "next": "3"
     },
     "3": {
       "speaker": "El barbero",
       "es": "Ay, amigo mío... estás loco. Pero primero una prueba: ¿sabes usar «ser» y «estar»?",
-      "en": "Oh, my friend... you are mad. But first a test: do you know how to use \"ser\" and \"estar\"?"
+      "fr": "Ah, mon ami... tu es fou. Mais d'abord une épreuve : sais-tu utiliser « ser » et « estar » ?"
     }
   }
 }

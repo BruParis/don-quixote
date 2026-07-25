@@ -27,6 +27,12 @@ There are no tests or linter configured. This is not a git repository.
 
 A 2D browser game that retraces the story of *Don Quixote* to teach Spanish. Players pick episodes from a world map, walk around a tile-based map per episode, trigger NPCs/events, and complete Spanish-learning minigames (vocab, grammar, conjugation, dialogue challenges) embedded in the story.
 
+**Target audience:** neurodivergent students (dyslexia, ADHD) at a French collège/lycée. Accessibility and adaptation to these needs are a core requirement, not an afterthought — weigh them alongside any feature or content work:
+
+- Dyslexia: readable typography (spacing, avoid justified/dense text), short text chunks over long paragraphs, avoid relying on text alone (icons/audio support), no reading-speed pressure.
+- ADHD: clear immediate feedback, short focused tasks, minimal visual clutter/distraction, predictable pacing, avoid punishing timers.
+- Translations target French (`fr` field throughout dialogues/minigames), not English, since students are francophone.
+
 Full requirements live in `don-quixote-game-spec.md` — read it before starting implementation work. Key points summarized below.
 
 ## Tech stack (per spec)
@@ -72,6 +78,7 @@ All narrative/pedagogical content must be data-driven (JSON), separate from game
 
 - Favor data-driven, reusable architecture over one-off hardcoded scenes — the game is expected to grow to many episodes and minigames, so new content should be addable by adding data files, not by duplicating scene code.
 - Minigames must stay modular/swappable behind the common minigame interface so new Spanish-exercise types can be added later without refactoring core scenes.
+- Every new feature or content change should be checked against the neurodivergent-accessibility needs above (dyslexia, ADHD) — not just "does it work" but "is it readable and low-pressure for these students."
 
 ## Suggested build order (per spec)
 

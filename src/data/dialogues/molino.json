@@ -4,19 +4,19 @@
     "1": {
       "speaker": "Don Quijote",
       "es": "¡Mira, Sancho! ¡Treinta gigantes enormes! Voy a atacarlos ahora mismo.",
-      "en": "Look, Sancho! Thirty enormous giants! I am going to attack them right now.",
+      "fr": "Regarde, Sancho ! Trente géants énormes ! Je vais les attaquer tout de suite.",
       "next": "2"
     },
     "2": {
       "speaker": "Sancho Panza",
       "es": "¡No son gigantes, señor! ¡Son molinos de viento!",
-      "en": "They are not giants, sir! They are windmills!",
+      "fr": "Ce ne sont pas des géants, monsieur ! Ce sont des moulins à vent !",
       "next": "3"
     },
     "3": {
       "speaker": "Don Quijote",
       "es": "Tú no entiendes de aventuras. ¡Completa las frases de esta gran batalla!",
-      "en": "You know nothing of adventures. Complete the sentences of this great battle!"
+      "fr": "Tu ne comprends rien aux aventures. Complète les phrases de cette grande bataille !"
     }
   }
 }
