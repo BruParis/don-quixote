@@ -1,0 +1,58 @@
+{
+  "name": "La aldea de La Mancha",
+  "tileset": "overworld",
+  "zoom": 3,
+  "grid": [
+    "TTTTTTTTTTTTTTTTTTTTTTTT",
+    "TGGGGGGGGGGGGGGGGGGGGGGT",
+    "TGGGGGGGGGGGGGGGGGGGGGGT",
+    "TGGGGGGGGGGGGGGGGGGGGGGT",
+    "TGGGGGGGGGGGGGGGGGGGGGGT",
+    "TGGGGGGGGGGGGGGGGGGGGGGT",
+    "TGGGPPPPPPPPPPPPPGGGGGGT",
+    "TGGGGGGGGGGPGGGGGGGGGGGT",
+    "TGGGGGGGGGGPGGGGGGGWWWGT",
+    "TGCCCGGGGGGPGGGGGGGWWWGT",
+    "TGCCCGGGGGGPGGGGGGGWWWGT",
+    "TGCCCGGGGGGPGGGGGGGGGGGT",
+    "TGGGGGGGGGGPGGGGGGGGGGGT",
+    "TGGGGGGGGGGPGGGGGGTGGGGT",
+    "TGGGGGGGGGGPGGGGGGGGGGGT",
+    "TTTTTTTTTTTTTTTTTTTTTTTT"
+  ],
+  "stamps": [
+    { "x": 2, "y": 1, "src": [6, 0, 6, 5], "collide": true },
+    { "x": 14, "y": 1, "src": [12, 0, 6, 5], "collide": true },
+    { "x": 9, "y": 4, "src": [3, 21, 1, 1], "collide": true }
+  ],
+  "spawns": {
+    "default": [11, 13],
+    "fromHouse": [4, 6]
+  },
+  "npcs": [
+    {
+      "id": "sobrina",
+      "name": "La sobrina",
+      "sprite": "sobrina",
+      "x": 13,
+      "y": 8,
+      "dialogue": "sobrina",
+      "minigame": "mc_saludos",
+      "required": true
+    },
+    {
+      "id": "barbero",
+      "name": "El barbero",
+      "sprite": "barbero",
+      "x": 16,
+      "y": 7,
+      "dialogue": "barbero",
+      "minigame": "fib_ser_estar",
+      "required": true
+    }
+  ],
+  "doors": [
+    { "x": 4, "y": 5, "to": "house", "spawn": "entry" },
+    { "x": 5, "y": 5, "to": "house", "spawn": "entry" }
+  ]
+}

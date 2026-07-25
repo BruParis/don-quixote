@@ -1,0 +1,38 @@
+{
+  "id": "fib_ser_estar",
+  "type": "fill-in-blank",
+  "title": "Gramática: Ser y estar",
+  "instructions": "Completa cada frase con la forma correcta del verbo entre paréntesis.",
+  "items": [
+    {
+      "sentence": "Yo ___ don Quijote de la Mancha.",
+      "hint": "ser",
+      "answer": "soy",
+      "en": "I am Don Quixote of La Mancha."
+    },
+    {
+      "sentence": "El barbero ___ en la aldea.",
+      "hint": "estar",
+      "answer": "está",
+      "en": "The barber is in the village."
+    },
+    {
+      "sentence": "Mi caballo Rocinante ___ muy flaco.",
+      "hint": "ser",
+      "answer": "es",
+      "en": "My horse Rocinante is very skinny."
+    },
+    {
+      "sentence": "Nosotros ___ de La Mancha.",
+      "hint": "ser",
+      "answer": "somos",
+      "en": "We are from La Mancha."
+    },
+    {
+      "sentence": "¿Cómo ___ tú hoy?",
+      "hint": "estar",
+      "answer": "estás",
+      "en": "How are you today?"
+    }
+  ]
+}

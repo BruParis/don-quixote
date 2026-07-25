@@ -1,0 +1,58 @@
+{
+  "name": "La venta (¿o un castillo?)",
+  "tileset": "inner",
+  "zoom": 4,
+  "grid": [
+    "BBBBBBBBBBBBBBBB",
+    "BFFFFFFFFFFFFFFB",
+    "BFFFFFFFFFFFFFFB",
+    "BFFFFFFFFFFFFFFB",
+    "BFFFFFFFFFFFFFFB",
+    "BFFFFFFFFFFFFFFB",
+    "BFFFFFFFFFFFFFFB",
+    "BFFFFFFFFFFFFFFB",
+    "BFFFFFFFFFFFFFFB",
+    "BFFFFFFFFFFFFFFB",
+    "BBBBBBBBBBBBBBBB"
+  ],
+  "stamps": [
+    { "x": 2, "y": 0, "src": [12, 0, 2, 1] },
+    { "x": 8, "y": 0, "src": [16, 0, 2, 1] },
+    { "x": 1, "y": 1, "src": [3, 12, 3, 2], "collide": true },
+    { "x": 4, "y": 1, "src": [9, 6, 3, 3], "collide": true },
+    { "x": 8, "y": 1, "src": [12, 11, 2, 2], "collide": true },
+    { "x": 11, "y": 1, "src": [21, 1, 2, 3], "collide": true },
+    { "x": 13, "y": 1, "src": [23, 1, 2, 3], "collide": true },
+    { "x": 6, "y": 5, "src": [0, 7, 4, 3] },
+    { "x": 11, "y": 6, "src": [16, 1, 3, 3], "collide": true },
+    { "x": 1, "y": 6, "src": [8, 12, 1, 3], "collide": true },
+    { "x": 7, "y": 9, "src": [7, 4, 2, 2] }
+  ],
+  "spawns": {
+    "entry": [8, 8]
+  },
+  "npcs": [
+    {
+      "id": "ventero",
+      "name": "El ventero",
+      "sprite": "ventero",
+      "x": 5,
+      "y": 4,
+      "dialogue": "ventero",
+      "minigame": "match_caballero",
+      "required": true
+    },
+    {
+      "id": "arriero",
+      "name": "El arriero",
+      "sprite": "arriero",
+      "x": 12,
+      "y": 5,
+      "dialogue": "arriero"
+    }
+  ],
+  "doors": [
+    { "x": 7, "y": 9, "to": "inn_exterior", "spawn": "fromInn" },
+    { "x": 8, "y": 9, "to": "inn_exterior", "spawn": "fromInn" }
+  ]
+}

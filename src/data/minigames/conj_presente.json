@@ -1,0 +1,13 @@
+{
+  "id": "conj_presente",
+  "type": "conjugation",
+  "title": "Conjugación: El presente",
+  "instructions": "Escribe la forma correcta del verbo en presente.",
+  "items": [
+    { "pronoun": "yo", "verb": "hablar", "answer": "hablo", "en": "I speak" },
+    { "pronoun": "tú", "verb": "comer", "answer": "comes", "en": "you eat" },
+    { "pronoun": "él", "verb": "vivir", "answer": "vive", "en": "he lives" },
+    { "pronoun": "nosotros", "verb": "querer", "answer": "queremos", "en": "we want" },
+    { "pronoun": "ellos", "verb": "ir", "answer": "van", "en": "they go" }
+  ]
+}

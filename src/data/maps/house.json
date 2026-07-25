@@ -1,0 +1,53 @@
+{
+  "name": "La casa de don Quijote",
+  "tileset": "inner",
+  "zoom": 4,
+  "grid": [
+    "HHHHHHHHHHHHHHHH",
+    "HFFFFFFFFFFFFFFH",
+    "HFFFFFFFFFFFFFFH",
+    "HFFFFFFFFFFFFFFH",
+    "HFFFFFFFFFFFFFFH",
+    "HFFFFFFFFFFFFFFH",
+    "HFFFFFFFFFFFFFFH",
+    "HFFFFFFFFFFFFFFH",
+    "HFFFFFFFFFFFFFFH",
+    "HFFFFFFFFFFFFFFH",
+    "HHHHHHHHHHHHHHHH"
+  ],
+  "stamps": [
+    { "x": 2, "y": 1, "src": [0, 3, 4, 3], "collide": true },
+    { "x": 10, "y": 1, "src": [0, 3, 4, 3], "collide": true },
+    { "x": 6, "y": 4, "src": [0, 7, 4, 3] },
+    { "x": 13, "y": 7, "src": [0, 15, 2, 2], "collide": true },
+    { "x": 1, "y": 6, "src": [8, 12, 1, 3], "collide": true },
+    { "x": 7, "y": 9, "src": [7, 4, 2, 2] }
+  ],
+  "spawns": {
+    "entry": [8, 8]
+  },
+  "npcs": [
+    {
+      "id": "cura",
+      "name": "El cura",
+      "sprite": "cura",
+      "x": 7,
+      "y": 3,
+      "dialogue": "cura",
+      "minigame": "match_casa",
+      "required": true
+    },
+    {
+      "id": "ama",
+      "name": "El ama",
+      "sprite": "ama",
+      "x": 3,
+      "y": 7,
+      "dialogue": "ama"
+    }
+  ],
+  "doors": [
+    { "x": 7, "y": 9, "to": "village", "spawn": "fromHouse" },
+    { "x": 8, "y": 9, "to": "village", "spawn": "fromHouse" }
+  ]
+}

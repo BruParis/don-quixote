@@ -1,0 +1,22 @@
+{
+  "start": "1",
+  "nodes": {
+    "1": {
+      "speaker": "El barbero",
+      "es": "¡Buenas tardes, don Alonso! ¿Adónde vas con esa armadura vieja?",
+      "en": "Good afternoon, Don Alonso! Where are you going with that old armor?",
+      "next": "2"
+    },
+    "2": {
+      "speaker": "Don Quijote",
+      "es": "Ya no soy Alonso Quijano. ¡Soy don Quijote de la Mancha, caballero andante!",
+      "en": "I am no longer Alonso Quijano. I am Don Quixote of La Mancha, knight-errant!",
+      "next": "3"
+    },
+    "3": {
+      "speaker": "El barbero",
+      "es": "Ay, amigo mío... estás loco. Pero primero una prueba: ¿sabes usar «ser» y «estar»?",
+      "en": "Oh, my friend... you are mad. But first a test: do you know how to use \"ser\" and \"estar\"?"
+    }
+  }
+}

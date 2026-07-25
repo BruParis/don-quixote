@@ -1,0 +1,45 @@
+{
+  "name": "El camino a la venta",
+  "tileset": "overworld",
+  "zoom": 3,
+  "grid": [
+    "TTTTTTTTTTTTTTTTTTTTTT",
+    "TGGGGGGGGGGGGGGGGGGGGT",
+    "TGGGGGGGGGGGGGGGGGGGGT",
+    "TGGGGGGGGGGGGGGGGGTGGT",
+    "TGGGGGGGGGGGGGGGGGGGGT",
+    "TGGGGGGGGGGGGGGGGGGGGT",
+    "TGGGGGGGGGGGGGGGGGGGGT",
+    "TGGGGPPGGGGGGGGGGGGGGT",
+    "TGGGGPPGGGGGGGWWWGGGGT",
+    "TGGGGPPGGGGGGGWWWGGGGT",
+    "TGGGGPPGGGGGGGWWWGGGGT",
+    "TGCCCPPGGGGGGGGGGGGGGT",
+    "TGCCCPPGGGGGGGGGGGTGGT",
+    "TTTTTTTTTTTTTTTTTTTTTT"
+  ],
+  "stamps": [
+    { "x": 3, "y": 2, "src": [12, 0, 6, 5], "collide": true },
+    { "x": 10, "y": 6, "src": [3, 21, 1, 1], "collide": true }
+  ],
+  "spawns": {
+    "default": [5, 12],
+    "fromInn": [5, 7]
+  },
+  "npcs": [
+    {
+      "id": "moza",
+      "name": "Maritornes",
+      "sprite": "moza",
+      "x": 10,
+      "y": 8,
+      "dialogue": "moza",
+      "minigame": "mc_comida",
+      "required": true
+    }
+  ],
+  "doors": [
+    { "x": 5, "y": 6, "to": "inn_interior", "spawn": "entry" },
+    { "x": 6, "y": 6, "to": "inn_interior", "spawn": "entry" }
+  ]
+}

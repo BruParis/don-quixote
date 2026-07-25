@@ -1,0 +1,14 @@
+{
+  "id": "match_caballero",
+  "type": "matching",
+  "title": "Vocabulario: El equipo del caballero",
+  "instructions": "Arrastra cada palabra española a su traducción. (Drag each Spanish word onto its translation.)",
+  "pairs": [
+    { "es": "la espada", "en": "sword" },
+    { "es": "el escudo", "en": "shield" },
+    { "es": "la lanza", "en": "lance" },
+    { "es": "el yelmo", "en": "helmet" },
+    { "es": "la armadura", "en": "armor" },
+    { "es": "el caballo", "en": "horse" }
+  ]
+}

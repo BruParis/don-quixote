@@ -1,0 +1,38 @@
+{
+  "id": "fib_molinos",
+  "type": "fill-in-blank",
+  "title": "La batalla de los molinos",
+  "instructions": "Completa cada frase con la forma correcta del verbo entre paréntesis.",
+  "items": [
+    {
+      "sentence": "Los molinos ___ gigantes para don Quijote.",
+      "hint": "ser",
+      "answer": "son",
+      "en": "The windmills are giants to Don Quixote."
+    },
+    {
+      "sentence": "Don Quijote ___ contra los molinos.",
+      "hint": "luchar",
+      "answer": "lucha",
+      "en": "Don Quixote fights against the windmills."
+    },
+    {
+      "sentence": "El viento ___ las aspas del molino.",
+      "hint": "mover",
+      "answer": "mueve",
+      "en": "The wind moves the windmill's sails."
+    },
+    {
+      "sentence": "Sancho ___ la verdad: ¡son molinos!",
+      "hint": "decir",
+      "answer": "dice",
+      "en": "Sancho tells the truth: they are windmills!"
+    },
+    {
+      "sentence": "Después de la batalla, don Quijote ___ en el suelo.",
+      "hint": "estar",
+      "answer": "está",
+      "en": "After the battle, Don Quixote is on the ground."
+    }
+  ]
+}

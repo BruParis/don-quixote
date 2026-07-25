@@ -1,0 +1,22 @@
+{
+  "start": "1",
+  "nodes": {
+    "1": {
+      "speaker": "Maritornes",
+      "es": "¡Bienvenido a la venta, señor caballero! ¿Tienes hambre?",
+      "en": "Welcome to the inn, sir knight! Are you hungry?",
+      "next": "2"
+    },
+    "2": {
+      "speaker": "Don Quijote",
+      "es": "¡Esta no es una venta, es un castillo! Y tú eres una noble dama.",
+      "en": "This is not an inn, it is a castle! And you are a noble lady.",
+      "next": "3"
+    },
+    "3": {
+      "speaker": "Maritornes",
+      "es": "¿Castillo? Jaja... Bueno, esta «noble dama» te trae la cena. ¿Conoces la comida española?",
+      "en": "A castle? Haha... Well, this \"noble lady\" brings you dinner. Do you know Spanish food?"
+    }
+  }
+}

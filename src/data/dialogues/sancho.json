@@ -1,0 +1,22 @@
+{
+  "start": "1",
+  "nodes": {
+    "1": {
+      "speaker": "Sancho Panza",
+      "es": "¡Don Quijote! Soy Sancho Panza, labrador y ahora tu fiel escudero.",
+      "en": "Don Quixote! I am Sancho Panza, farmer and now your faithful squire.",
+      "next": "2"
+    },
+    "2": {
+      "speaker": "Don Quijote",
+      "es": "¡Bien, Sancho! Si me acompañas, te prometo el gobierno de una ínsula.",
+      "en": "Good, Sancho! If you come with me, I promise you the governorship of an island.",
+      "next": "3"
+    },
+    "3": {
+      "speaker": "Sancho Panza",
+      "es": "¿Una ínsula? ¡Acepto! Pero hablemos bien: ¿sabes conjugar los verbos en presente?",
+      "en": "An island? I accept! But let's speak properly: can you conjugate verbs in the present tense?"
+    }
+  }
+}

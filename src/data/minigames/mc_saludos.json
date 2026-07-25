@@ -1,0 +1,33 @@
+{
+  "id": "mc_saludos",
+  "type": "multiple-choice",
+  "title": "Vocabulario: Los saludos",
+  "instructions": "Elige la respuesta correcta. (Choose the correct answer.)",
+  "questions": [
+    {
+      "prompt": "¿Cómo se dice \"Good morning\"?",
+      "options": ["Buenas noches", "Buenos días", "Hasta luego", "De nada"],
+      "answer": 1
+    },
+    {
+      "prompt": "\"¿Cómo estás?\" significa...",
+      "options": ["What is your name?", "How are you?", "Where are you?", "How old are you?"],
+      "answer": 1
+    },
+    {
+      "prompt": "Para despedirte (to say goodbye) dices...",
+      "options": ["¡Hola!", "¡Salud!", "¡Adiós!", "¡Perdón!"],
+      "answer": 2
+    },
+    {
+      "prompt": "¿Qué respondes a \"gracias\"?",
+      "options": ["De nada", "Por favor", "Lo siento", "Buenas tardes"],
+      "answer": 0
+    },
+    {
+      "prompt": "\"Mucho gusto\" significa...",
+      "options": ["Very tasty", "Nice to meet you", "See you soon", "Excuse me"],
+      "answer": 1
+    }
+  ]
+}

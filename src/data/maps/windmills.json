@@ -1,0 +1,59 @@
+{
+  "name": "El campo de Montiel",
+  "tileset": "overworld",
+  "zoom": 3,
+  "grid": [
+    "TTTTTTTTTTTTTTTTTTTTTTTT",
+    "TGGGGGGGGGGGGGGGGGGGGGGT",
+    "TGGGGGGGGGGGGGGGGGGGGGGT",
+    "TGGGGGGGGGGGGGGGGGGGGGGT",
+    "TGGGGGGGGGGGGGGGGGGGGGGT",
+    "TGGGGGGGGGGGGGGGGGGGGGGT",
+    "TGGGGGGGGGGGGGGGGGGGGGGT",
+    "TGGGGGGGGGGGGGGGGGGGGGGT",
+    "TGPPPPPPPPPPPPPPPPPPPPGT",
+    "TGGGGGGGGGGGGGGGGGGGGGGT",
+    "TGGCCCCGGGGGGGGGCCCCGGGT",
+    "TGGCCCCGGGGGGGGGCCCCGGGT",
+    "TGGCCCCGGGGGGGGGCCCCGGGT",
+    "TGGGGGGGGTGGGGGGGGGGGGGT",
+    "TGGGGGGGGGGGGGGGGGGGGGGT",
+    "TTTTTTTTTTTTTTTTTTTTTTTT"
+  ],
+  "stamps": [
+    { "x": 3, "y": 1, "src": [0, 21, 3, 6], "collide": true },
+    { "x": 11, "y": 1, "src": [0, 21, 3, 6], "collide": true },
+    { "x": 18, "y": 1, "src": [0, 21, 3, 6], "collide": true }
+  ],
+  "sails": [
+    { "x": 72, "y": 32 },
+    { "x": 200, "y": 32 },
+    { "x": 312, "y": 32 }
+  ],
+  "spawns": {
+    "default": [8, 13]
+  },
+  "npcs": [
+    {
+      "id": "sancho",
+      "name": "Sancho Panza",
+      "sprite": "sancho",
+      "x": 8,
+      "y": 11,
+      "dialogue": "sancho",
+      "minigame": "conj_presente",
+      "required": true
+    },
+    {
+      "id": "molino",
+      "name": "El gigante",
+      "sprite": "sign",
+      "x": 12,
+      "y": 7,
+      "dialogue": "molino",
+      "minigame": "fib_molinos",
+      "required": true
+    }
+  ],
+  "doors": []
+}

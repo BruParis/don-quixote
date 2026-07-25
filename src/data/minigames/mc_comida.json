@@ -1,0 +1,33 @@
+{
+  "id": "mc_comida",
+  "type": "multiple-choice",
+  "title": "Vocabulario: La comida",
+  "instructions": "Elige la respuesta correcta. (Choose the correct answer.)",
+  "questions": [
+    {
+      "prompt": "¿Cómo se dice \"bread\"?",
+      "options": ["el vino", "el pan", "el queso", "la sopa"],
+      "answer": 1
+    },
+    {
+      "prompt": "\"El queso\" es...",
+      "options": ["meat", "fish", "cheese", "egg"],
+      "answer": 2
+    },
+    {
+      "prompt": "\"El vino\" significa...",
+      "options": ["water", "milk", "juice", "wine"],
+      "answer": 3
+    },
+    {
+      "prompt": "¿Cómo se dice \"water\"?",
+      "options": ["el agua", "la carne", "la fruta", "el aceite"],
+      "answer": 0
+    },
+    {
+      "prompt": "\"La cena\" es...",
+      "options": ["breakfast", "lunch", "dinner", "dessert"],
+      "answer": 2
+    }
+  ]
+}

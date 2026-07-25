@@ -1,0 +1,22 @@
+{
+  "start": "1",
+  "nodes": {
+    "1": {
+      "speaker": "El ventero",
+      "es": "¿Así que quieres ser armado caballero, «noble señor»?",
+      "en": "So you want to be knighted, \"noble sir\"?",
+      "next": "2"
+    },
+    "2": {
+      "speaker": "Don Quijote",
+      "es": "Sí, señor castellano. He velado mis armas toda la noche en vuestro castillo.",
+      "en": "Yes, lord of the castle. I have kept vigil over my arms all night in your castle.",
+      "next": "3"
+    },
+    "3": {
+      "speaker": "El ventero",
+      "es": "Muy bien, de rodillas. Pero antes: un caballero conoce su equipo. ¡Demuéstralo!",
+      "en": "Very well, on your knees. But first: a knight knows his equipment. Prove it!"
+    }
+  }
+}
