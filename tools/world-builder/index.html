@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>World Builder — Don Quixote asset/map inspector</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header>
+    <h1>World Builder</h1>
+    <p>
+      Read-only tileset inspector + map previewer. Reads live from
+      <code>src/core/textures.ts</code> and <code>src/data</code> — nothing here is duplicated
+      by hand, so it can't drift from what the game actually renders.
+      Run <code>npm run dev</code> and open <code>/tools/world-builder/</code>.
+    </p>
+  </header>
+
+  <div id="layout">
+    <aside id="sidebar">
+      <section>
+        <h2>Tileset</h2>
+        <label>Sheet
+          <select id="tileset-select">
+            <option value="overworld">Overworld.png</option>
+            <option value="inner">Inner.png</option>
+          </select>
+        </label>
+        <label>Zoom
+          <input type="range" id="tileset-zoom" min="1" max="6" step="1" value="3" />
+        </label>
+        <p id="tileset-dims" class="hint"></p>
+      </section>
+
+      <section>
+        <h2>Map preview</h2>
+        <label>Map
+          <select id="map-select"></select>
+        </label>
+        <label>Zoom
+          <input type="range" id="map-zoom" min="1" max="6" step="1" value="3" />
+        </label>
+        <div class="toggles">
+          <label><input type="checkbox" id="toggle-grid" checked /> grid lines</label>
+          <label><input type="checkbox" id="toggle-collide" checked /> collisions</label>
+          <label><input type="checkbox" id="toggle-stamps" checked /> stamps</label>
+          <label><input type="checkbox" id="toggle-npcs" checked /> NPCs</label>
+          <label><input type="checkbox" id="toggle-doors" checked /> doors</label>
+          <label><input type="checkbox" id="toggle-spawns" checked /> spawns</label>
+        </div>
+      </section>
+
+      <section>
+        <h2>Editor <span class="hint">writes straight to the map's JSON file</span></h2>
+        <label><input type="checkbox" id="edit-toggle" /> Enable editing</label>
+        <div id="editor-controls" class="editor-controls" hidden>
+          <div class="tool-row">
+            <label><input type="radio" name="tool" value="paint" checked /> Paint tile</label>
+            <label><input type="radio" name="tool" value="stamp" /> Stamp</label>
+            <label><input type="radio" name="tool" value="npc" /> NPC</label>
+            <label><input type="radio" name="tool" value="door" /> Door</label>
+            <label><input type="radio" name="tool" value="spawn" /> Spawn</label>
+          </div>
+
+          <div id="paint-tool-panel" class="tool-panel">
+            <p class="hint">
+              Click a tile in the tileset panel to select a brush, then click or drag on the map
+              to paint. Picking a tile not yet in this map's legend adds it automatically.
+            </p>
+            <p>brush: <span id="brush-label">none selected</span></p>
+          </div>
+
+          <div id="stamp-tool-panel" class="tool-panel" hidden>
+            <p class="hint">
+              Drag a rectangle on the tileset panel to select the stamp's source art, then click
+              the map to place it. Drag an existing stamp on the map to move it; delete it from
+              the Stamps table below.
+            </p>
+            <p>source: <span id="stamp-draft-label">none selected</span></p>
+            <label><input type="checkbox" id="stamp-collide" checked /> new stamps collide</label>
+          </div>
+
+          <div id="npc-tool-panel" class="tool-panel" hidden>
+            <p class="hint">Click the map to place an NPC, fill in its details, then Add. Drag an existing NPC to move it.</p>
+            <label>id <input type="text" id="npc-id" /></label>
+            <label>name <input type="text" id="npc-name" /></label>
+            <label>sprite <input type="text" id="npc-sprite" list="character-ids" /></label>
+            <label>dialogue <input type="text" id="npc-dialogue" list="dialogue-ids" /></label>
+            <label>minigame <input type="text" id="npc-minigame" list="minigame-ids" /></label>
+            <label><input type="checkbox" id="npc-required" /> required</label>
+            <button type="button" id="npc-add-btn" disabled>Click map to place…</button>
+          </div>
+
+          <div id="door-tool-panel" class="tool-panel" hidden>
+            <p class="hint">Click the map to place a door, choose its target, then Add. Drag an existing door to move it.</p>
+            <label>to <select id="door-to"></select></label>
+            <label>spawn key <input type="text" id="door-spawn" list="door-spawn-keys" /></label>
+            <button type="button" id="door-add-btn" disabled>Click map to place…</button>
+          </div>
+
+          <div id="spawn-tool-panel" class="tool-panel" hidden>
+            <p class="hint">Click the map to place/move a spawn point (an existing key is overwritten).</p>
+            <label>key <input type="text" id="spawn-key" value="default" /></label>
+            <button type="button" id="spawn-add-btn" disabled>Click map to place…</button>
+          </div>
+
+          <div class="editor-actions">
+            <button type="button" id="undo-btn" disabled>Undo</button>
+            <button type="button" id="save-btn" disabled>Save to disk</button>
+            <button type="button" id="copy-json-btn">Copy JSON</button>
+          </div>
+          <p id="save-status" class="hint"></p>
+        </div>
+        <datalist id="character-ids"></datalist>
+        <datalist id="dialogue-ids"></datalist>
+        <datalist id="minigame-ids"></datalist>
+        <datalist id="door-spawn-keys"></datalist>
+      </section>
+
+      <section>
+        <h2>Inspector</h2>
+        <div id="info-panel" class="info">Hover a tile in either panel to inspect it.</div>
+      </section>
+
+      <section>
+        <h2>Legend <span class="hint">current map's tileset</span></h2>
+        <table id="legend-table">
+          <thead><tr><th>char</th><th>index</th><th>col,row</th><th>collide</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Stamps <span class="hint">current map</span></h2>
+        <table id="stamps-table">
+          <thead><tr><th>#</th><th>at x,y</th><th>src col,row,w,h</th><th>collide</th><th></th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>NPCs <span class="hint">current map</span></h2>
+        <table id="npcs-table">
+          <thead><tr><th>id</th><th>at x,y</th><th>dialogue</th><th>minigame</th><th></th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Doors <span class="hint">current map</span></h2>
+        <table id="doors-table">
+          <thead><tr><th>at x,y</th><th>to</th><th>spawn</th><th></th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Spawns <span class="hint">current map</span></h2>
+        <table id="spawns-table">
+          <thead><tr><th>key</th><th>x,y</th><th></th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </aside>
+
+    <main id="panels">
+      <div class="panel">
+        <h2>Tileset — <span id="tileset-title"></span></h2>
+        <div class="canvas-wrap"><canvas id="tileset-canvas"></canvas></div>
+      </div>
+      <div class="panel">
+        <h2>Map — <span id="map-title"></span></h2>
+        <div class="canvas-wrap"><canvas id="map-canvas"></canvas></div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="./main.ts"></script>
+</body>
+</html>

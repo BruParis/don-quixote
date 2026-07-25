@@ -35,6 +35,9 @@ const CHARACTERS: Record<string, Palette> = {
   arriero: { shirt: ['#7a7a7a', '#5a5a5a', '#404040'], hair: ['#2b2118', '#1a140e'] }
 };
 
+/** Character ids with a palette-swapped sprite (excludes procedural sprites like "sign"). */
+export const CHARACTER_IDS: string[] = Object.keys(CHARACTERS);
+
 function hexToRgb(hex: string): [number, number, number] {
   const n = parseInt(hex.slice(1), 16);
   return [(n >> 16) & 0xff, (n >> 8) & 0xff, n & 0xff];
