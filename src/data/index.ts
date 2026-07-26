@@ -1,6 +1,7 @@
-import type { DialogueDef, EpisodeDef, MapDef, MinigameDef } from '../types';
+import type { CharacterPalette, DialogueDef, EpisodeDef, MapDef, MinigameDef } from '../types';
 
 import episodesJson from './episodes.json';
+import charactersJson from './characters.json';
 
 import village from './maps/village.json';
 import house from './maps/house.json';
@@ -27,6 +28,11 @@ import conjPresente from './minigames/conj_presente.json';
 import fibMolinos from './minigames/fib_molinos.json';
 
 export const EPISODES = episodesJson as EpisodeDef[];
+
+export const CHARACTER_PALETTES: Record<string, CharacterPalette> = charactersJson as unknown as Record<
+  string,
+  CharacterPalette
+>;
 
 export const MAPS: Record<string, MapDef> = {
   village: village as unknown as MapDef,

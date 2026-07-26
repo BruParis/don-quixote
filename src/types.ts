@@ -69,6 +69,12 @@ export interface DialogueDef {
   nodes: Record<string, DialogueNode>;
 }
 
+export interface CharacterPalette {
+  shirt: [string, string, string];
+  pants?: [string];
+  hair?: [string, string];
+}
+
 export interface MinigameResult {
   score: number;
   total: number;

@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import { EPISODES, MAPS } from '../data';
 import { getScore, isEpisodeComplete, isEpisodeUnlocked, resetProgress, showTranslations, toggleTranslations } from '../core/progress';
+import { hideDevTools, showDevTools } from '../core/hud';
 import { FONT_FAMILY } from '../core/theme';
 
 /** Map of La Mancha with selectable episode nodes (locked / unlocked / completed). */
@@ -16,6 +17,11 @@ export class WorldMapScene extends Phaser.Scene {
     const W = this.scale.width;
     const H = this.scale.height;
     this.confirmingReset = false;
+
+    if (import.meta.env.DEV) {
+      showDevTools();
+      this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => hideDevTools());
+    }
 
     const bg = this.add.graphics();
     bg.fillGradientStyle(0x2b2013, 0x2b2013, 0x14100a, 0x14100a, 1);

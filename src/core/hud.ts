@@ -27,3 +27,12 @@ export function showToast(msg: string, ms = 3500): void {
 export function getMinigameRoot(): HTMLElement {
   return el('minigame-root');
 }
+
+/** Shortcuts to tools/world-builder and tools/character-builder, shown on the world map in dev only. */
+export function showDevTools(): void {
+  el('dev-tools').classList.remove('hidden');
+}
+
+export function hideDevTools(): void {
+  el('dev-tools').classList.add('hidden');
+}

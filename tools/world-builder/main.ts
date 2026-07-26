@@ -1,4 +1,4 @@
-import { MAPS, DIALOGUES, MINIGAMES } from '../../src/data';
+import { MAPS, DIALOGUES, MINIGAMES, CHARACTER_PALETTES } from '../../src/data';
 import { COLLIDE_CHARS, LEGENDS, TILE } from '../../src/core/textures';
 import { CHARACTER_IDS } from '../../src/core/characters';
 import type { DoorDef, MapDef, NpcDef, StampDef } from '../../src/types';
@@ -114,7 +114,8 @@ const stampCollideInput = el<HTMLInputElement>('stamp-collide');
 
 const npcIdInput = el<HTMLInputElement>('npc-id');
 const npcNameInput = el<HTMLInputElement>('npc-name');
-const npcSpriteInput = el<HTMLInputElement>('npc-sprite');
+const npcSpritePicker = el<HTMLDivElement>('npc-sprite-picker');
+const npcSpriteValue = el<HTMLSpanElement>('npc-sprite-value');
 const npcDialogueInput = el<HTMLInputElement>('npc-dialogue');
 const npcMinigameInput = el<HTMLInputElement>('npc-minigame');
 const npcRequiredInput = el<HTMLInputElement>('npc-required');
@@ -133,7 +134,6 @@ const saveBtn = el<HTMLButtonElement>('save-btn');
 const copyJsonBtn = el<HTMLButtonElement>('copy-json-btn');
 const saveStatus = el<HTMLParagraphElement>('save-status');
 
-const characterIdsDatalist = el<HTMLDataListElement>('character-ids');
 const dialogueIdsDatalist = el<HTMLDataListElement>('dialogue-ids');
 const minigameIdsDatalist = el<HTMLDataListElement>('minigame-ids');
 
@@ -151,6 +151,10 @@ const state = {
   brush: null as { char: string; index: number; isNew: boolean } | null,
   stampDraft: null as { src: [number, number, number, number] } | null,
   selectedStamp: null as number | null,
+  selectedNpc: null as number | null,
+  selectedDoor: null as number | null,
+  selectedSpawn: null as string | null,
+  npcSprite: null as string | null,
   pendingPlacement: null as { type: 'npc' | 'door' | 'spawn'; x: number; y: number } | null,
   undoStacks: {} as Record<string, MapDef[]>,
   dirtyMaps: new Set<string>()
@@ -185,15 +189,13 @@ for (const id of Object.keys(MAPS)) {
   doorToSelect.appendChild(opt);
 }
 
-characterIdsDatalist.innerHTML = [...CHARACTER_IDS, 'sign']
-  .map((id) => `<option value="${escapeHtml(id)}"></option>`)
-  .join('');
 dialogueIdsDatalist.innerHTML = Object.keys(DIALOGUES)
   .map((id) => `<option value="${escapeHtml(id)}"></option>`)
   .join('');
 minigameIdsDatalist.innerHTML = Object.keys(MINIGAMES)
   .map((id) => `<option value="${escapeHtml(id)}"></option>`)
   .join('');
+renderSpritePicker();
 
 function currentMap(): MapDef {
   return MAPS[state.mapId];
@@ -406,6 +408,9 @@ function undo(): void {
   state.dirtyMaps.add(state.mapId);
   state.pendingPlacement = null;
   state.selectedStamp = null;
+  state.selectedNpc = null;
+  state.selectedDoor = null;
+  state.selectedSpawn = null;
   drag = null;
   updatePendingLabel();
   updateUndoButton();
@@ -645,6 +650,23 @@ function renderMap(): void {
       mctx.strokeRect(s.x * TILE * zoom + 1, s.y * TILE * zoom + 1, sw * TILE * zoom - 2, sh * TILE * zoom - 2);
     }
   }
+  const strokeSelectedCell = (x: number, y: number) => {
+    mctx.strokeStyle = '#ffe066';
+    mctx.lineWidth = 3;
+    mctx.strokeRect(x * TILE * zoom + 1, y * TILE * zoom + 1, TILE * zoom - 2, TILE * zoom - 2);
+  };
+  if (state.editMode && state.tool === 'npc' && state.selectedNpc !== null) {
+    const n = map.npcs[state.selectedNpc];
+    if (n) strokeSelectedCell(n.x, n.y);
+  }
+  if (state.editMode && state.tool === 'door' && state.selectedDoor !== null) {
+    const d = map.doors[state.selectedDoor];
+    if (d) strokeSelectedCell(d.x, d.y);
+  }
+  if (state.editMode && state.tool === 'spawn' && state.selectedSpawn !== null) {
+    const s = map.spawns[state.selectedSpawn];
+    if (s) strokeSelectedCell(s[0], s[1]);
+  }
   if (state.editMode && state.pendingPlacement) {
     const p = state.pendingPlacement;
     markCell(p.x, p.y, zoom, '#ff5c5c', '+ new');
@@ -712,6 +734,30 @@ function renderStampsTable(): void {
     }
     stampsBody.appendChild(tr);
   });
+}
+
+function spriteSwatchHtml(id: string): string {
+  const palette = CHARACTER_PALETTES[id];
+  return palette
+    ? `<span class="swatch-preview">${palette.shirt.map((c) => `<span style="background:${c}"></span>`).join('')}</span>`
+    : `<span class="swatch-preview sign">✎</span>`;
+}
+
+function renderSpritePicker(): void {
+  npcSpriteValue.textContent = state.npcSprite ?? 'none selected';
+  npcSpritePicker.innerHTML = '';
+  for (const id of [...CHARACTER_IDS, 'sign']) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'sprite-option' + (state.npcSprite === id ? ' selected' : '');
+    btn.innerHTML = `${spriteSwatchHtml(id)}<span>${escapeHtml(id)}</span>`;
+    btn.addEventListener('click', () => {
+      state.npcSprite = id;
+      if (!npcIdInput.value.trim()) npcIdInput.value = id;
+      renderSpritePicker();
+    });
+    npcSpritePicker.appendChild(btn);
+  }
 }
 
 function renderNpcsTable(): void {
@@ -890,6 +936,9 @@ mapSelect.addEventListener('change', () => {
   state.stampDraft = null;
   state.brush = null;
   state.selectedStamp = null;
+  state.selectedNpc = null;
+  state.selectedDoor = null;
+  state.selectedSpawn = null;
   drag = null;
   updatePendingLabel();
   updateStampDraftLabel();
@@ -1024,6 +1073,8 @@ mapCanvas.addEventListener('mousedown', (e) => {
     if (idx >= 0) {
       snapshotForUndo();
       drag = { kind: 'npc', index: idx };
+      state.selectedNpc = idx;
+      renderMap();
       return;
     }
   } else if (state.tool === 'door') {
@@ -1031,6 +1082,8 @@ mapCanvas.addEventListener('mousedown', (e) => {
     if (idx >= 0) {
       snapshotForUndo();
       drag = { kind: 'door', index: idx };
+      state.selectedDoor = idx;
+      renderMap();
       return;
     }
   } else if (state.tool === 'spawn') {
@@ -1038,6 +1091,8 @@ mapCanvas.addEventListener('mousedown', (e) => {
     if (key) {
       snapshotForUndo();
       drag = { kind: 'spawn', key };
+      state.selectedSpawn = key;
+      renderMap();
       return;
     }
   }
@@ -1095,6 +1150,54 @@ window.addEventListener('mouseup', () => {
   }
 });
 
+// 'x' deletes the selected stamp/NPC/door/spawn, mirroring each table's × button.
+window.addEventListener('keydown', (e) => {
+  if (e.key.toLowerCase() !== 'x') return;
+  const target = e.target as HTMLElement | null;
+  if (target && /^(input|textarea|select)$/i.test(target.tagName)) return;
+  if (!state.editMode) return;
+
+  const map = currentMap();
+
+  if (state.tool === 'stamp' && state.selectedStamp !== null) {
+    const idx = state.selectedStamp;
+    if (!map.stamps?.[idx]) return;
+    snapshotForUndo();
+    map.stamps.splice(idx, 1);
+    state.selectedStamp = null;
+    markDirty();
+    renderMap();
+    renderStampsTable();
+  } else if (state.tool === 'npc' && state.selectedNpc !== null) {
+    const idx = state.selectedNpc;
+    if (!map.npcs[idx]) return;
+    snapshotForUndo();
+    map.npcs.splice(idx, 1);
+    state.selectedNpc = null;
+    markDirty();
+    renderMap();
+    renderNpcsTable();
+  } else if (state.tool === 'door' && state.selectedDoor !== null) {
+    const idx = state.selectedDoor;
+    if (!map.doors[idx]) return;
+    snapshotForUndo();
+    map.doors.splice(idx, 1);
+    state.selectedDoor = null;
+    markDirty();
+    renderMap();
+    renderDoorsTable();
+  } else if (state.tool === 'spawn' && state.selectedSpawn !== null) {
+    const key = state.selectedSpawn;
+    if (!(key in map.spawns)) return;
+    snapshotForUndo();
+    delete map.spawns[key];
+    state.selectedSpawn = null;
+    markDirty();
+    renderMap();
+    renderSpawnsTable();
+  }
+});
+
 // ---- events: editor mode / tool switching ----
 editToggle.addEventListener('change', () => {
   state.editMode = editToggle.checked;
@@ -1132,9 +1235,9 @@ npcAddBtn.addEventListener('click', () => {
   if (!p || p.type !== 'npc') return;
   const id = npcIdInput.value.trim();
   const name = npcNameInput.value.trim();
-  const sprite = npcSpriteInput.value.trim();
+  const sprite = state.npcSprite;
   if (!id || !name || !sprite) {
-    alert('id, name and sprite are required');
+    alert('id, name and sprite (pick one from the bank) are required');
     return;
   }
   const map = currentMap();

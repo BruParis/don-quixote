@@ -3,6 +3,7 @@ import { readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const MAPS_DIR = join(__dirname, 'src/data/maps');
+const CHARACTERS_FILE = join(__dirname, 'src/data/characters.json');
 
 /**
  * Dev-only save endpoint for tools/world-builder's editor. Lets the browser
@@ -44,8 +45,42 @@ function worldBuilderSavePlugin(): Plugin {
   };
 }
 
+/**
+ * Dev-only save endpoint for tools/character-builder's editor. Lets the browser
+ * write the whole edited palette bank straight back to src/data/characters.json.
+ * Never runs during `vite build` (apply: 'serve'), so it ships nothing to the game.
+ */
+function characterBuilderSavePlugin(): Plugin {
+  return {
+    name: 'character-builder-save',
+    apply: 'serve',
+    configureServer(server) {
+      server.middlewares.use('/__character-builder/save', (req, res, next) => {
+        if (req.method !== 'POST') return next();
+
+        let body = '';
+        req.on('data', (chunk) => {
+          body += chunk;
+          if (body.length > 2_000_000) req.destroy(); // guard against runaway bodies
+        });
+        req.on('end', () => {
+          try {
+            const { json } = JSON.parse(body) as { json: string };
+            writeFileSync(CHARACTERS_FILE, json);
+            res.setHeader('content-type', 'application/json');
+            res.end(JSON.stringify({ ok: true }));
+          } catch (err) {
+            res.statusCode = 500;
+            res.end(JSON.stringify({ error: String(err) }));
+          }
+        });
+      });
+    }
+  };
+}
+
 export default defineConfig({
   // relative paths so the build works from any hosting URL or subpath
   base: './',
-  plugins: [worldBuilderSavePlugin()]
+  plugins: [worldBuilderSavePlugin(), characterBuilderSavePlugin()]
 });

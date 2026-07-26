@@ -8,6 +8,13 @@
 </head>
 <body>
   <header>
+    <nav class="breadcrumbs">
+      <a href="/">← Game</a>
+      <span class="sep">/</span>
+      <span class="current">World Builder</span>
+      <span class="sep">/</span>
+      <a href="/tools/character-builder/">Character Builder</a>
+    </nav>
     <h1>World Builder</h1>
     <p>
       Read-only tileset inspector + map previewer. Reads live from
@@ -82,10 +89,11 @@
           </div>
 
           <div id="npc-tool-panel" class="tool-panel" hidden>
-            <p class="hint">Click the map to place an NPC, fill in its details, then Add. Drag an existing NPC to move it.</p>
+            <p class="hint">Click the map to place an NPC, pick its sprite from the bank, then Add. Drag an existing NPC to move it.</p>
+            <p class="group-label">sprite <span id="npc-sprite-value" class="hint">none selected</span></p>
+            <div id="npc-sprite-picker" class="sprite-picker"></div>
             <label>id <input type="text" id="npc-id" /></label>
             <label>name <input type="text" id="npc-name" /></label>
-            <label>sprite <input type="text" id="npc-sprite" list="character-ids" /></label>
             <label>dialogue <input type="text" id="npc-dialogue" list="dialogue-ids" /></label>
             <label>minigame <input type="text" id="npc-minigame" list="minigame-ids" /></label>
             <label><input type="checkbox" id="npc-required" /> required</label>
@@ -112,7 +120,6 @@
           </div>
           <p id="save-status" class="hint"></p>
         </div>
-        <datalist id="character-ids"></datalist>
         <datalist id="dialogue-ids"></datalist>
         <datalist id="minigame-ids"></datalist>
         <datalist id="door-spawn-keys"></datalist>

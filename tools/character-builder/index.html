@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Character Builder — Don Quixote palette editor</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header>
+    <nav class="breadcrumbs">
+      <a href="/">← Game</a>
+      <span class="sep">/</span>
+      <a href="/tools/world-builder/">World Builder</a>
+      <span class="sep">/</span>
+      <span class="current">Character Builder</span>
+    </nav>
+    <h1>Character Builder</h1>
+    <p>
+      Palette-swap editor for <code>src/data/characters.json</code>. Reads live from
+      <code>src/core/characters.ts</code> (the same recolor code the game uses), so previews can't
+      drift from what actually renders in-game.
+      Run <code>npm run dev</code> and open <code>/tools/character-builder/</code>.
+    </p>
+  </header>
+
+  <div id="layout">
+    <aside id="sidebar">
+      <section>
+        <h2>Source sheet</h2>
+        <p class="hint">assets/character.png — the un-recolored base walk cycle.</p>
+        <label>Zoom
+          <input type="range" id="source-zoom" min="1" max="8" step="1" value="4" />
+        </label>
+      </section>
+
+      <section>
+        <h2>Characters <span class="hint">bank</span></h2>
+        <table id="chars-table">
+          <thead><tr><th></th><th>id</th><th></th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="add-row">
+          <input type="text" id="new-char-id" placeholder="new character id" />
+          <button type="button" id="new-char-add-btn">Add</button>
+        </div>
+        <p id="new-char-error" class="hint error"></p>
+      </section>
+
+      <section>
+        <h2>Palette <span class="hint" id="palette-selected-label">none selected</span></h2>
+        <div id="palette-editor" hidden>
+          <div class="swatch-group">
+            <p class="group-label">shirt</p>
+            <label>1 <input type="color" id="shirt-0" /></label>
+            <label>2 <input type="color" id="shirt-1" /></label>
+            <label>3 <input type="color" id="shirt-2" /></label>
+          </div>
+          <div class="swatch-group">
+            <label class="group-label"><input type="checkbox" id="pants-toggle" /> pants</label>
+            <label>1 <input type="color" id="pants-0" disabled /></label>
+          </div>
+          <div class="swatch-group">
+            <label class="group-label"><input type="checkbox" id="hair-toggle" /> hair</label>
+            <label>1 <input type="color" id="hair-0" disabled /></label>
+            <label>2 <input type="color" id="hair-1" disabled /></label>
+          </div>
+        </div>
+        <p id="palette-empty-hint" class="hint">Select or add a character to edit its palette.</p>
+      </section>
+
+      <section>
+        <h2>Preview</h2>
+        <label>Zoom
+          <input type="range" id="preview-zoom" min="1" max="8" step="1" value="4" />
+        </label>
+        <div class="tool-row">
+          <label><input type="radio" name="direction" value="down" checked /> down</label>
+          <label><input type="radio" name="direction" value="left" /> left</label>
+          <label><input type="radio" name="direction" value="up" /> up</label>
+          <label><input type="radio" name="direction" value="right" /> right</label>
+        </div>
+        <label><input type="checkbox" id="animate-toggle" checked /> animate walk cycle</label>
+      </section>
+
+      <section>
+        <h2>Editor <span class="hint">writes straight to src/data/characters.json</span></h2>
+        <div class="editor-actions">
+          <button type="button" id="undo-btn" disabled>Undo</button>
+          <button type="button" id="save-btn" disabled>Save to disk</button>
+          <button type="button" id="copy-json-btn">Copy JSON</button>
+        </div>
+        <p id="save-status" class="hint"></p>
+      </section>
+    </aside>
+
+    <main id="panels">
+      <div class="panel">
+        <h2>Source — character.png</h2>
+        <div class="canvas-wrap"><canvas id="source-canvas"></canvas></div>
+      </div>
+      <div class="panel">
+        <h2>Recolored sheet — <span id="grid-title">none selected</span></h2>
+        <div class="canvas-wrap"><canvas id="grid-canvas"></canvas></div>
+      </div>
+      <div class="panel">
+        <h2>Walk preview — <span id="walk-title">none selected</span></h2>
+        <div class="canvas-wrap"><canvas id="walk-canvas"></canvas></div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="./main.ts"></script>
+</body>
+</html>
