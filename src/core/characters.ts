@@ -74,8 +74,9 @@ export function buildCharacterTextures(scene: Phaser.Scene): void {
     const canvas = recolorSheet(baseImg, palette);
 
     const tex = scene.textures.addCanvas(key, canvas)!;
-    // frames 0-3 down, 4-7 left, 8-11 up, 12-15 right (walk cycles)
-    const dirs = ['down', 'left', 'up', 'right'];
+    // frames 0-3 down, 4-7 right, 8-11 up, 12-15 left (walk cycles) —
+    // the source sheet's row 1 sprite faces right and row 3 faces left.
+    const dirs = ['down', 'right', 'up', 'left'];
     dirs.forEach((_, row) => {
       for (let col = 0; col < 4; col++) {
         tex.add(row * 4 + col, 0, col * FRAME_W, row * FRAME_H, FRAME_W, FRAME_H);

@@ -7,7 +7,7 @@ interface MoveKeys {
   right: Phaser.Input.Keyboard.Key[];
 }
 
-const IDLE_FRAME: Record<string, number> = { down: 0, left: 4, up: 8, right: 12 };
+const IDLE_FRAME: Record<string, number> = { down: 0, right: 4, up: 8, left: 12 };
 
 /**
  * Reusable 4-directional top-down movement, shared by every exploration scene.

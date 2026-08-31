@@ -3,7 +3,8 @@ import { CHAR_SHEET, SOURCE_PALETTE, recolorSheet } from '../../src/core/charact
 import type { CharacterPalette } from '../../src/types';
 
 type Direction = 'down' | 'left' | 'up' | 'right';
-const DIRS: Direction[] = ['down', 'left', 'up', 'right'];
+// Sheet row order: row 1 sprite faces right, row 3 faces left (see src/core/characters.ts).
+const DIRS: Direction[] = ['down', 'right', 'up', 'left'];
 
 function loadImage(src: string): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
